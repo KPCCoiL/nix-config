@@ -23,7 +23,10 @@
       nix.settings.experimental-features = "nix-command flakes";
 
       # Enable alternative shell support in nix-darwin.
-      programs.bash.enable = true;
+      programs.bash = {
+        enable = true;
+        completion.enable = true;
+      };
 
       system.primaryUser = "akifumi";
 
