@@ -16,6 +16,7 @@
     vis
     tmux
     git
+    gh
     nnn
     fzf
     rlwrap
