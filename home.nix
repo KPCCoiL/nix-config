@@ -51,17 +51,19 @@
 
   programs.bash = {
     enable = true;
+    shellAliases = {
+        ls = "ls --color=auto";
+        l = "ls -la";
+        la = "la -a";
+        ll = "ls -la";
+        info = "info --vi-keys";
+    };
     bashrcExtra = ''
       bind 'TAB:menu-complete'
       bind '"\e[Z": menu-complete-backward'
       bind "set show-all-if-ambiguous on"
       bind "set menu-complete-display-prefix on"
       bind -s 'set completion-ignore-case on'
-      alias ls='ls --color=auto'
-      alias l='ls -la'
-      alias la='ls -a'
-      alias ll='ls -la'
-      alias info='info --vi-keys'
       set_bash_prompt () {
           local last_status="''$?"
           if [[ ''$last_status -eq 0 ]]; then
