@@ -35,7 +35,6 @@
 
     # Miscellaneous
     nixfmt-rfc-style
-    thefuck
   ];
 
   home = {
@@ -73,7 +72,6 @@
           PS1="''${status}→ \[\e[1;36m\]\W \[\e[0m\]"
       }
       export PROMPT_COMMAND=set_bash_prompt
-      command -v thefuck > /dev/null && eval "''$(thefuck --alias)"
       n () {
           # Block nesting of nnn in subshells
           if [[ "''${NNNLVL:-0}" -ge 1 ]]; then
@@ -101,4 +99,6 @@
       }
     '';
   };
+
+  programs.thefuck.enable = true;
 }
