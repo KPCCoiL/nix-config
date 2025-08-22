@@ -18,7 +18,6 @@
     git
     gh
     nnn
-    fzf
     rlwrap
 
     # Programming languages (listed here for casual use)
@@ -103,4 +102,5 @@
   };
 
   programs.thefuck.enable = true;
+  programs.fzf.enable = true;
 }
