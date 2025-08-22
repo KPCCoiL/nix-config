@@ -38,6 +38,14 @@
     thefuck
   ];
 
+  home = {
+    sessionPath = [ "$HOME/.local/bin" ];
+    sessionVariables = {
+      EDITOR = "vis";
+      NNN_COLORS = "#a2a2a2a2";
+    };
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -91,12 +99,6 @@
                   rm -f "''$NNN_TMPFILE" > /dev/null
           fi
       }
-    '';
-    profileExtra = ''
-      export NNN_COLORS=#a2a2a2a2
-      export PATH=~/.local/bin:''$PATH
-      export EDITOR=vis
-      [[ -f ~/.bashrc ]] && . ~/.bashrc
     '';
   };
 }
