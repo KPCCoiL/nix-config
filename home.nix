@@ -42,6 +42,7 @@
     sessionPath = [ "$HOME/.local/bin" ];
     sessionVariables = {
       EDITOR = "vis";
+      LSCOLORS = "gxfxcxdxbxegedabagacad";
       NNN_COLORS = "#a2a2a2a2";
     };
   };
@@ -72,7 +73,6 @@
           PS1="''${status}→ \[\e[1;36m\]\W \[\e[0m\]"
       }
       export PROMPT_COMMAND=set_bash_prompt
-      export LSCOLORS=gxfxcxdxbxegedabagacad
       command -v thefuck > /dev/null && eval "''$(thefuck --alias)"
       n () {
           # Block nesting of nnn in subshells
