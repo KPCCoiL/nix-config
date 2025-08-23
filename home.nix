@@ -23,10 +23,14 @@
     # Programming languages (listed here for casual use)
     sbcl
     guile
-    (python3.withPackages (ps: with ps; [ numpy matplotlib ]))
+    (python3.withPackages (
+      ps: with ps; [
+        numpy
+        matplotlib
+      ]
+    ))
     # Until I figure out the proper way...
     julia-bin
-
 
     # Academic stuffs
     pubs
@@ -51,11 +55,11 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-        ls = "ls --color=auto";
-        l = "ls -la";
-        la = "la -a";
-        ll = "ls -la";
-        info = "info --vi-keys";
+      ls = "ls --color=auto";
+      l = "ls -la";
+      la = "la -a";
+      ll = "ls -la";
+      info = "info --vi-keys";
     };
     bashrcExtra = ''
       bind 'TAB:menu-complete'
@@ -121,7 +125,7 @@
       bind - split-window -v -c "#{pane_current_path}"
       bind | split-window -h -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
-      
+
       if -F "#{==:#{session_windows},1}" "set -g status off" "set -g status on"
       set-hook -g window-linked 'if -F "#{==:#{session_windows},1}" "set -g status off" "set -g status on"'
       set-hook -g window-unlinked 'if -F "#{==:#{session_windows},1}" "set -g status off" "      set -g status on"'
