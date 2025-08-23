@@ -14,7 +14,6 @@
   home.packages = with pkgs; [
     # Daily tools
     vis
-    tmux
     git
     gh
     nnn
@@ -103,4 +102,25 @@
 
   programs.thefuck.enable = true;
   programs.fzf.enable = true;
+
+  programs.tmux = {
+    enable = true;
+    keyMode = "vi";
+    mouse = true;
+    extraConfig = ''
+      set -g set-titles on
+      set -g set-titles-string "#W"
+      bind h select-pane -L
+      bind j select-pane -D
+      bind k select-pane -U
+      bind l select-pane -R
+      bind - split-window -v -c "#{pane_current_path}"
+      bind | split-window -h -c "#{pane_current_path}"
+      bind c new-window -c "#{pane_current_path}"
+      
+      if -F "#{==:#{session_windows},1}" "set -g status off" "set -g status on"
+      set-hook -g window-linked 'if -F "#{==:#{session_windows},1}" "set -g status off" "set -g status on"'
+set-hook -g window-unlinked 'if -F "#{==:#{session_windows},1}" "set -g status off" "      set -g status on"'
+    '';
+  };
 }
