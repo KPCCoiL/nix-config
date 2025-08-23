@@ -18,6 +18,7 @@
     gh
     nnn
     rlwrap
+    indent
 
     # Programming languages (listed here for casual use)
     sbcl
@@ -125,5 +126,12 @@
       set-hook -g window-linked 'if -F "#{==:#{session_windows},1}" "set -g status off" "set -g status on"'
       set-hook -g window-unlinked 'if -F "#{==:#{session_windows},1}" "set -g status off" "      set -g status on"'
     '';
+  };
+
+  home.file.vis = {
+    # Compromise: plugins are managed by vis-plug, which must be explicitly installed
+    source = ./vis;
+    target = ".config/vis";
+    recursive = true;
   };
 }
