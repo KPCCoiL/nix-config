@@ -107,6 +107,9 @@
     enable = true;
     keyMode = "vi";
     mouse = true;
+    escapeTime = 10;
+    terminal = "tmux-256color";
+    sensibleOnTop = false;
     extraConfig = ''
       set -g set-titles on
       set -g set-titles-string "#W"
