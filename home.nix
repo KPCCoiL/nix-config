@@ -113,6 +113,7 @@
     keyMode = "vi";
     mouse = true;
     escapeTime = 10;
+    historyLimit = 10000;
     terminal = "tmux-256color";
     sensibleOnTop = false;
     extraConfig = ''
