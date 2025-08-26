@@ -50,6 +50,8 @@
 
           users.users.akifumi.home = "/Users/akifumi";
 
+          security.pam.services.sudo_local.touchIdAuth = true;
+
           homebrew = {
             enable = true;
             onActivation.cleanup = "uninstall";
