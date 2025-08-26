@@ -19,6 +19,7 @@
     nnn
     rlwrap
     indent
+    todo-txt-cli
 
     # Programming languages (listed here for casual use)
     sbcl
@@ -139,4 +140,11 @@
     target = ".config/vis";
     recursive = true;
   };
+
+  home.file.".todo.cfg".text = ''
+    export TODO_DIR="$HOME/Dropbox/アプリ/2do.txt"
+    export TODO_FILE="''$TODO_DIR/todo.txt"
+    export DONE_FILE="''$TODO_DIR/done.txt"
+    export REPORT_FILE="''$TODO_DIR/report.txt"
+  '';
 }
