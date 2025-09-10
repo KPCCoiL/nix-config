@@ -106,7 +106,7 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
     setOption("number")
     local indents = {
         ansi_c = "tab8", makefile = "tab8", go = "tab4",
-        fennel = "2", latex = "2", lisp = "2", sml = "2"
+        fennel = "2", latex = "2", lisp = "2", sml = "2", nix = "2",
     }
     local indent = indents[win.syntax]
     if indent then

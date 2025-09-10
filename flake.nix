@@ -29,6 +29,7 @@
 
           # Necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";
+          nix.channel.enable = false;
 
           # Enable alternative shell support in nix-darwin.
           programs.bash = {
