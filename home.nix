@@ -42,7 +42,10 @@
   ];
 
   home = {
-    sessionPath = [ "$HOME/.local/bin" ];
+    sessionPath = [
+      "$HOME/.local/bin"
+      "/opt/homebrew/bin"
+    ];
     sessionVariables = {
       EDITOR = "vis";
       LSCOLORS = "gxfxcxdxbxegedabagacad";
