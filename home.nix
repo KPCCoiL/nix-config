@@ -136,7 +136,7 @@
     '';
   };
 
-  programs.gnupg.enable = true;
+  programs.gpg.enable = true;
 
   programs.pubs = {
     enable = true;
