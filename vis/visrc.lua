@@ -139,7 +139,8 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
     local formatters = {
         ansi_c = "indent -linux",
         fennel = "fnlfmt -",
-        zig = "zig fmt --stdin"
+        zig = "zig fmt --stdin",
+        julia = "julia -e 'using JuliaFormatter; read(stdin, String) |> format_text |> print'",
     }
 
     if formatters[win.syntax] then
