@@ -136,6 +136,8 @@
     '';
   };
 
+  programs.gnupg.enable = true;
+
   programs.pubs = {
     enable = true;
     extraConfig = ''
