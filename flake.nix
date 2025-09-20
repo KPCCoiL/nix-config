@@ -51,7 +51,10 @@
 
           users.users.akifumi.home = "/Users/akifumi";
 
-          security.pam.services.sudo_local.touchIdAuth = true;
+          security.pam.services.sudo_local = {
+            reattach = true;
+            touchIdAuth = true;
+          };
 
           homebrew = {
             enable = true;
