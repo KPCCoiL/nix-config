@@ -141,7 +141,7 @@
     enable = true;
     settings = {
       email = "achitose@protonmail.com";
-      pinentry = [ pkgs.pinentry_mac ];
+      pinentry = pkgs.pinentry_mac;
     };
   };
 
