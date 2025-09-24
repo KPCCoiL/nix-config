@@ -137,6 +137,13 @@
   };
 
   programs.gpg.enable = true;
+  programs.rbw = {
+    enable = true;
+    settings = {
+      email = "achitose@protonmail.com";
+      pinentry = [ pkgs.pinentry_mac ];
+    };
+  };
 
   programs.pubs = {
     enable = true;
