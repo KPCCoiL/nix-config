@@ -20,6 +20,7 @@
     rlwrap
     indent
     todo-txt-cli
+    bitwarden-desktop
 
     # Programming languages (listed here for casual use)
     sbcl
