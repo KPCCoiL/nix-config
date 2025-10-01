@@ -21,6 +21,7 @@
     indent
     todo-txt-cli
     bitwarden-desktop
+    outfieldr
 
     # Programming languages (listed here for casual use)
     sbcl
@@ -62,6 +63,7 @@
       la = "la -a";
       ll = "ls -la";
       info = "info --vi-keys";
+      tldr = "tldr -L en --platform osx";
     };
     bashrcExtra = ''
       bind 'TAB:menu-complete'
