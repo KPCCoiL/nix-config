@@ -34,9 +34,6 @@
     # Until I figure out the proper way...
     julia-bin
 
-    # Academic stuffs
-    texliveFull
-
     # Miscellaneous
     nixfmt-rfc-style
   ];
