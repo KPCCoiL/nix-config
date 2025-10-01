@@ -25,6 +25,7 @@
     # Programming languages (listed here for casual use)
     sbcl
     guile
+    cbqn
     (python3.withPackages (
       ps: with ps; [
         numpy
