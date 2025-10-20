@@ -14,8 +14,6 @@
   home.packages = with pkgs; [
     # Daily tools
     vis
-    git
-    gh
     nnn
     rlwrap
     indent
@@ -108,6 +106,34 @@
       }
     '';
   };
+
+  programs.git = {
+    enable = true;
+    userName = "KPCCoiL";
+    userEmail = "4506345+KPCCoiL@users.noreply.github.com";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+    ignores = [
+      ".DS_Store"
+      ".AppleDouble"
+      ".LSOverride"
+      "Icon\r\r"
+      "._*"
+      ".DocumentRevisions-V100"
+      ".fseventsd"
+      ".Spotlight-V100"
+      ".TemporaryItems"
+      ".Trashes"
+      ".VolumeIcon.icns"
+      ".AppleDB"
+      ".AppleDesktop"
+      "Network Trash Folder"
+      "Temporary Items"
+      ".apdisk"
+    ];
+  };
+  programs.gh.enable = true;
 
   programs.thefuck.enable = true;
   programs.fzf.enable = true;
