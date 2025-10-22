@@ -172,6 +172,10 @@
     };
   };
 
+  programs.qutebrowser = {
+    enable = true;
+  };
+
   programs.pubs = {
     enable = true;
     extraConfig = ''
