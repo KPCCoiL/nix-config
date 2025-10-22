@@ -174,11 +174,37 @@
 
   programs.qutebrowser = {
     enable = true;
+    aliases = {
+      q = "tab-close";
+      "update-filter-list" = "spawn --userscript update-filter-list.sh";
+      "add-arXiv" = "spawn --userscript add-arxiv.sh";
+      "add-doi" = "spawn --userscript add-doi.sh";
+      brave = "spawn --userscript open-in-brave.sh";
+    };
+    searchEngines = {
+      inspire = "https://inspirehep.net/literature?sort=mostrecent&size=100&page=1&q={}";
+      nixpkgs = "https://search.nixos.org/packages?channel=unstable&query={}";
+    };
+    settings = {
+      colors = {
+        tabs = {
+          even.bg = "#163852";
+          odd.bg = "#282E23";
+          selected = {
+            even.bg = "#BB0000";
+            odd.bg = "#DA0000";
+          };
+        };
+      };
+      fonts.default_size = "13pt";
+      url.start_pages = "about:blank";
+      tabs.last_close = "close";
+      downloads.remove_finished = 5000;
+      content.pdfjs = true;
+    };
     extraConfig = ''
       import os
       import subprocess
-
-      config.load_autoconfig(False)
 
       for mode in ['insert', 'caret']:
           config.bind('<Ctrl-l>', 'mode-leave', mode=mode)
@@ -186,29 +212,10 @@
       for mode in ['normal', 'caret']:
           config.bind('<Meta-d>', 'spawn --userscript open-dictionary.applescript', mode=mode)
 
-      c.colors.tabs.selected.even.bg = '#BB0000'
-      c.colors.tabs.selected.odd.bg = '#DA0000'
-      c.colors.tabs.even.bg = '#164852'
-      c.colors.tabs.odd.bg = '#282E23'
-      c.fonts.default_size = '13pt'
-      c.aliases['q'] = 'tab-close'
-      c.url.searchengines['inspire'] = 'https://inspirehep.net/literature?sort=mostrecent&size=100&page=1&q={}'
-      c.url.searchengines['nixpkgs'] = 'https://search.nixos.org/packages?channel=unstable&query={}'
-      c.url.start_pages = 'about:blank'
-      c.tabs.last_close = 'close'
-      c.downloads.remove_finished = 5000
-      c.content.pdfjs = True
       config.set('content.javascript.clipboard', 'access', 'github.com')
-      # config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/122.0.0.0 Safari/{webkit_version}')
 
-      os.environ['SUSHI'] = 'toro'
-      path = subprocess.run(['/run/current-system/sw/bin/bash', '-i', '-c', 'echo $PATH'], capture_output=True)
+      path = subprocess.run(['${pkgs.bash}', '-i', '-c', 'echo $PATH'], capture_output=True)
       os.environ['PATH'] = path.stdout.decode()
-
-      c.aliases['update-filter-list'] = 'spawn --userscript update-filter-list.sh'
-      c.aliases['add-arXiv'] = 'spawn --userscript add-arxiv.sh'
-      c.aliases['add-doi'] = 'spawn --userscript add-doi.sh'
-      c.aliases['brave'] = 'spawn --userscript open-in-brave.sh'
 
       filters = []
       for filename in ['filters.txt', 'additional-filters.txt']:
