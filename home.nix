@@ -214,7 +214,7 @@
 
       config.set('content.javascript.clipboard', 'access', 'github.com')
 
-      path = subprocess.run(['${pkgs.bash}', '-i', '-c', 'echo $PATH'], capture_output=True)
+      path = subprocess.run(['${pkgs.bash}/bin/bash', '-i', '-c', 'echo $PATH'], capture_output=True)
       os.environ['PATH'] = path.stdout.decode()
 
       filters = []
