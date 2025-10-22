@@ -61,7 +61,6 @@
             onActivation.cleanup = "uninstall";
             casks = [
               "j"
-              "qutebrowser"
               "docker-desktop"
               "amethyst"
               "inkscape"
