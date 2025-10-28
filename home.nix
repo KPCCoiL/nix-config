@@ -186,6 +186,7 @@
       inspire = "https://inspirehep.net/literature?sort=mostrecent&size=100&page=1&q={}";
       nixpkgs = "https://search.nixos.org/packages?channel=unstable&query={}";
     };
+    keyBindings.insert."<Meta+l>" = "spawn --userscript rbw.sh";
     settings = {
       colors = {
         tabs = {
