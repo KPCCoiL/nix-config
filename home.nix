@@ -180,6 +180,7 @@
       "add-arXiv" = "spawn --userscript add-arxiv.sh";
       "add-doi" = "spawn --userscript add-doi.sh";
       brave = "spawn --userscript open-in-brave.sh";
+      webarchive = "spawn --userscript webarchive.sh";
     };
     searchEngines = {
       inspire = "https://inspirehep.net/literature?sort=mostrecent&size=100&page=1&q={}";
