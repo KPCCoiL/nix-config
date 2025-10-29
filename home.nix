@@ -225,6 +225,36 @@
               filters += [l.strip()[1:-1] for l in f.readlines()]
       c.content.blocking.adblock.lists = filters
     '';
+    greasemonkey = [
+      (pkgs.writeText "overleaf-vim.js" ''
+        // ==UserScript==
+        // @name         Overleaf Editor Custom VIM Keybindings
+        // @namespace    http://tampermonkey.net/
+        // @version      0.1
+        // @match        https://www.overleaf.com/project/*
+        // @grant        none
+        // ==/UserScript==
+
+        (function() {
+            'use strict';
+
+            // On Overleaf editor window.addEventListener != undefined for some reason
+            // The qutebrowser grasemonkey wrapper is fooled by this, so we need unsafeWindow
+            unsafeWindow.addEventListener("UNSTABLE_editor:extensions", (event) => {
+                const { CodeMirror, CodeMirrorVim, extensions } = event.detail;
+
+                for (let mode of ['insert', 'visual']) {
+                    CodeMirrorVim.Vim.noremap("<C-l>", "<Esc>", mode);
+                }
+                for (let mode of ['normal', 'visual']) {
+                    CodeMirrorVim.Vim.noremap("j", "gj", mode);
+                    CodeMirrorVim.Vim.noremap("k", "gk", mode);
+                }
+                CodeMirrorVim.Vim.noremap("Y", "y$", "normal");
+            });
+        })();
+      '')
+    ];
   };
 
   programs.pubs = {
