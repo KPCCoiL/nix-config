@@ -256,6 +256,7 @@
       '')
     ];
   };
+  home.file.".qutebrowser/userscripts".source = ./qutebrowser_userscripts;
 
   programs.pubs = {
     enable = true;
