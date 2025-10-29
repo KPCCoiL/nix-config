@@ -58,7 +58,7 @@
     shellAliases = {
       ls = "ls --color=auto";
       l = "ls -la";
-      la = "la -a";
+      la = "ls -a";
       ll = "ls -la";
       info = "info --vi-keys";
       tldr = "tldr -L en --platform osx";
