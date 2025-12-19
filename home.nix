@@ -109,11 +109,9 @@
 
   programs.git = {
     enable = true;
-    userName = "KPCCoiL";
-    userEmail = "4506345+KPCCoiL@users.noreply.github.com";
-    extraConfig = {
-      init.defaultBranch = "main";
-    };
+    user.name = "KPCCoiL";
+    user.email = "4506345+KPCCoiL@users.noreply.github.com";
+    settings.init.defaultBranch = "main";
     ignores = [
       ".DS_Store"
       ".AppleDouble"
