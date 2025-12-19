@@ -135,7 +135,7 @@
   };
   programs.gh.enable = true;
 
-  programs.thefuck.enable = true;
+  programs.pay-respects.enable = true;
   programs.fzf.enable = true;
 
   programs.tmux = {
