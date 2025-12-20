@@ -136,6 +136,7 @@
   programs.gh.enable = true;
 
   programs.pay-respects.enable = true;
+  programs.nix-index.enable = true;
   programs.fzf.enable = true;
 
   programs.tmux = {
