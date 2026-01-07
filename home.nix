@@ -175,6 +175,8 @@
 
   programs.qutebrowser = {
     enable = true;
+    # qutebrowser from Homebrew provides overall better experience on darwin
+    package = pkgs.emptyDirectory;
     aliases = {
       q = "tab-close";
       "update-filter-list" = "spawn --userscript update-filter-list.sh";

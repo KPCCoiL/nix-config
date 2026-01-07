@@ -60,6 +60,7 @@
             enable = true;
             onActivation.cleanup = "uninstall";
             casks = [
+              "qutebrowser"
               "j"
               "docker-desktop"
               "amethyst"
