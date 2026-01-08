@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  pkgsUnstable,
+  ...
+}:
 
 {
   # This value determines the Home Manager release that your
@@ -166,6 +171,7 @@
 
   programs.gpg.enable = true;
   programs.rbw = {
+    package = pkgsUnstable.rbw;
     enable = true;
     settings = {
       email = "achitose@protonmail.com";

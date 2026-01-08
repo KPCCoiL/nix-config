@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgsUnstable.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
@@ -14,6 +15,7 @@
       self,
       nix-darwin,
       nixpkgs,
+      nixpkgsUnstable,
       home-manager,
     }:
     let
@@ -77,6 +79,9 @@
           configuration
           home-manager.darwinModules.home-manager
           {
+            home-manager.extraSpecialArgs = {
+              pkgsUnstable = import nixpkgsUnstable { system = "aarch64-darwin"; };
+            };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.akifumi = ./home.nix;
