@@ -340,6 +340,12 @@
     recursive = true;
   };
 
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   home.file.".todo.cfg".text = ''
     export TODO_DIR="$HOME/Dropbox/アプリ/2do.txt"
     export TODO_FILE="''$TODO_DIR/todo.txt"
