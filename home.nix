@@ -115,10 +115,24 @@
   programs.git = {
     enable = true;
     settings = {
-      user.name = "KPCCoiL";
-      user.email = "4506345+KPCCoiL@users.noreply.github.com";
       init.defaultBranch = "main";
+      user.name = "CoiL";
+      user.email = "coil@noreply.codeberg.org";
     };
+    signing = {
+      format = "openpgp";
+      key = "F486F0FCD3CA7E7D";
+      signByDefault = true;
+    };
+    includes = [
+      {
+        condition = "hasconfig:remote.*.url:https://github.com/**";
+        contents = {
+          user.name = "KPCCoiL";
+          user.email = "4506345+KPCCoiL@users.noreply.github.com";
+        };
+      }
+    ];
     ignores = [
       ".DS_Store"
       ".AppleDouble"
