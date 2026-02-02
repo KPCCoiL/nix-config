@@ -121,7 +121,7 @@
     };
     signing = {
       format = "openpgp";
-      key = "F486F0FCD3CA7E7D";
+      key = "1310798A35E32A5C";
       signByDefault = true;
     };
     includes = [
