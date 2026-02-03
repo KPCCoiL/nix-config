@@ -18,6 +18,7 @@
 
   home.packages = with pkgs; [
     # Daily tools
+    lem-ncurses
     vis
     nnn
     rlwrap
