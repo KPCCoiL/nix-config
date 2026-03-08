@@ -224,7 +224,13 @@
       };
       fonts.default_size = "13pt";
       url.start_pages = "about:blank";
-      tabs.last_close = "close";
+      tabs = {
+        last_close = "close";
+        position = "left";
+        width = "25%";
+        show = "switching";
+        show_switching_delay = 900;
+      };
       downloads.remove_finished = 5000;
       content.pdfjs = true;
     };
