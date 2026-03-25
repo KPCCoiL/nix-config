@@ -26,6 +26,7 @@
     todo-txt-cli
     bitwarden-desktop
     outfieldr
+    unicodeit
 
     # Programming languages (listed here for casual use)
     sbcl
