@@ -36,6 +36,7 @@
       ps: with ps; [
         numpy
         matplotlib
+        hy
       ]
     ))
     # Until I figure out the proper way...
