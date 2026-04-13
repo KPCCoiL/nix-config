@@ -16,10 +16,11 @@
   # changes in each release.
   home.stateVersion = "25.05";
 
+  imports = [ ./vis ];
+
   home.packages = with pkgs; [
     # Daily tools
     lem-ncurses
-    vis
     nnn
     rlwrap
     indent
@@ -52,7 +53,6 @@
       "/opt/homebrew/bin"
     ];
     sessionVariables = {
-      EDITOR = "vis";
       LSCOLORS = "gxfxcxdxbxegedabagacad";
       NNN_COLORS = "#a2a2a2a2";
     };
@@ -354,13 +354,6 @@
       # The version of this configuration file. Do not edit.
       version = 0.9.0
     '';
-  };
-
-  home.file.vis = {
-    # Compromise: plugins are managed by vis-plug, which must be explicitly installed
-    source = ./vis;
-    target = ".config/vis";
-    recursive = true;
   };
 
   programs.direnv = {

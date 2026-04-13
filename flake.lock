@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "base16-vis": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1515507522,
+        "narHash": "sha256-ikkkhInYCSb0Khbxiqf9P9dqwNaWTgXxfwrtYkohTZY=",
+        "owner": "przmv",
+        "repo": "base16-vis",
+        "rev": "05dae61a524edf21632fc45b473ec8c3e0f553ab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "przmv",
+        "repo": "base16-vis",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -144,11 +160,30 @@
     },
     "root": {
       "inputs": {
+        "base16-vis": "base16-vis",
         "home-manager": "home-manager",
         "lem": "lem",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgsUnstable": "nixpkgsUnstable"
+        "nixpkgsUnstable": "nixpkgsUnstable",
+        "vis-tmux-repl": "vis-tmux-repl"
+      }
+    },
+    "vis-tmux-repl": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1676040239,
+        "narHash": "sha256-d7aoJ0rxTMoaJJrRfLQQqf6H1vLFJhAfjV8ZnwxFClo=",
+        "owner": "KPCCoiL",
+        "repo": "vis-tmux-repl",
+        "rev": "ffd9d34164aa39f3703a947b72a8fbd0ad6b807d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "KPCCoiL",
+        "ref": "mac-sed",
+        "repo": "vis-tmux-repl",
+        "type": "github"
       }
     }
   },

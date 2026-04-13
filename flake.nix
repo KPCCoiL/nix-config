@@ -9,6 +9,15 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     lem.url = "github:lem-project/lem";
+
+    vis-tmux-repl = {
+      url = "github:KPCCoiL/vis-tmux-repl/mac-sed";
+      flake = false;
+    };
+    base16-vis = {
+      url = "github:przmv/base16-vis";
+      flake = false;
+    };
   };
 
   outputs =
@@ -19,6 +28,7 @@
       nixpkgsUnstable,
       home-manager,
       lem,
+      ...
     }:
     let
       configuration =
@@ -84,6 +94,12 @@
           {
             home-manager.extraSpecialArgs = {
               pkgsUnstable = import nixpkgsUnstable { system = "aarch64-darwin"; };
+              visAddons = {
+                theme = inputs.base16-vis;
+                plugins = {
+                  inherit (inputs) vis-tmux-repl;
+                };
+              };
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

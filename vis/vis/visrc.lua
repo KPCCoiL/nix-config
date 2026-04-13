@@ -1,13 +1,9 @@
 require("vis")
-local plug = require("plugins/vis-plug")
+require("plugins/vis-tmux-repl/tmux-repl")
 
-local plugins = {
-    { "KPCCoiL/vis-tmux-repl", file = "tmux-repl", ref="mac-sed" },
-    { 'przmv/base16-vis', theme = true, file = 'themes/base16-onedark' },
-}
-
-plug.init(plugins, true)
-
+vis.events.subscribe(vis.events.INIT, function()
+    vis:command("set theme themes/base16-onedark")
+end)
 
 function setOption(...)
     local optstrs = table.pack(...)
