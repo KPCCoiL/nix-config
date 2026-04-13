@@ -166,7 +166,24 @@
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
         "nixpkgsUnstable": "nixpkgsUnstable",
+        "vis-lspc": "vis-lspc",
         "vis-tmux-repl": "vis-tmux-repl"
+      }
+    },
+    "vis-lspc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1769792665,
+        "narHash": "sha256-hW+OwVHMKLpe0sN9GITW3XJR9jpES2WVW9ob/H68ck0=",
+        "owner": "muhq",
+        "repo": "vis-lspc",
+        "rev": "97d8bfa7adff156afe1dcf1e833c6dd864f6b5bf",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "muhq",
+        "repo": "vis-lspc",
+        "type": "gitlab"
       }
     },
     "vis-tmux-repl": {

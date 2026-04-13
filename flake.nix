@@ -14,6 +14,10 @@
       url = "github:KPCCoiL/vis-tmux-repl/mac-sed";
       flake = false;
     };
+    vis-lspc = {
+      url = "gitlab:muhq/vis-lspc";
+      flake = false;
+    };
     base16-vis = {
       url = "github:przmv/base16-vis";
       flake = false;
@@ -97,7 +101,7 @@
               visAddons = {
                 theme = inputs.base16-vis;
                 plugins = {
-                  inherit (inputs) vis-tmux-repl;
+                  inherit (inputs) vis-tmux-repl vis-lspc;
                 };
               };
             };

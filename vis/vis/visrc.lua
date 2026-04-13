@@ -1,5 +1,6 @@
 require("vis")
 require("plugins/vis-tmux-repl/tmux-repl")
+require("plugins/vis-lspc")
 
 vis.events.subscribe(vis.events.INIT, function()
     vis:command("set theme themes/base16-onedark")
