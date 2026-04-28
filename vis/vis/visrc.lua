@@ -1,6 +1,6 @@
 require("vis")
 require("plugins/vis-tmux-repl/tmux-repl")
-require("plugins/vis-lspc")
+local lspc = require("plugins/vis-lspc")
 
 vis.events.subscribe(vis.events.INIT, function()
     vis:command("set theme themes/base16-onedark")
@@ -162,3 +162,8 @@ end)
 vis.events.subscribe(vis.events.WIN_CLOSE, function (win)
     vis:redraw()
 end)
+
+lspc.ls_map.latex = {
+    name = 'texlab',
+    cmd = 'texlab',
+}
