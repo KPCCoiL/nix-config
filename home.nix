@@ -27,6 +27,9 @@
     bitwarden-desktop
     outfieldr
     unicodeit
+    gemini-cli
+    chatgpt-cli
+    codex
 
     # Programming languages (listed here for casual use)
     sbcl
