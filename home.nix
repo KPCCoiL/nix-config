@@ -20,7 +20,6 @@
 
   home.packages = with pkgs; [
     # Daily tools
-    lem-ncurses
     nnn
     rlwrap
     indent

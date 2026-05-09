@@ -8,7 +8,6 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    lem.url = "github:lem-project/lem";
 
     vis-tmux-repl = {
       url = "github:KPCCoiL/vis-tmux-repl/mac-sed";
@@ -31,7 +30,6 @@
       nixpkgs,
       nixpkgsUnstable,
       home-manager,
-      lem,
       ...
     }:
     let
@@ -66,7 +64,6 @@
 
           # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";
-          nixpkgs.overlays = [ lem.overlays.default ];
 
           users.users.akifumi.home = "/Users/akifumi";
 
