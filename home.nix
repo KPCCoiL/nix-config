@@ -28,7 +28,7 @@
     outfieldr
     unicodeit
     gemini-cli
-    chatgpt-cli
+    kardolus-chatgpt-cli
     codex
 
     # Programming languages (listed here for casual use)
