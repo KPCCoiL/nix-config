@@ -27,9 +27,9 @@
     bitwarden-desktop
     outfieldr
     unicodeit
-    gemini-cli
-    kardolus-chatgpt-cli
-    codex
+    pkgsUnstable.gemini-cli
+    pkgsUnstable.kardolus-chatgpt-cli
+    pkgsUnstable.codex
 
     # Programming languages (listed here for casual use)
     sbcl
