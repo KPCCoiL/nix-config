@@ -42,6 +42,7 @@
         hy
       ]
     ))
+    pforth
     # Until I figure out the proper way...
     julia-bin
 
