@@ -48,7 +48,7 @@ vis.events.subscribe(vis.events.INIT, function()
     end)
 end)
 
-for _, filetype in ipairs({"bqn", "ijs", "nix"}) do
+for _, filetype in ipairs({"bqn", "ijs", "nix", "asy"}) do
     vis.ftdetect.filetypes[filetype] = {
         ext = { "%." .. filetype .. "$" }
     }
@@ -167,3 +167,9 @@ lspc.ls_map.latex = {
     name = 'texlab',
     cmd = 'texlab',
 }
+
+lspc.ls_map.asy = {
+    name = 'asymptote',
+    cmd = 'asy -ls',
+}
+
