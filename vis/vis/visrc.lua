@@ -168,6 +168,8 @@ lspc.ls_map.latex = {
     cmd = 'texlab',
 }
 
+lspc.autostart = false
+
 vis.events.subscribe(vis.events.WIN_OPEN, function (win)
     local workingLSPs = { 'latex', }
     for _, lang in ipairs(workingLSPs) do
