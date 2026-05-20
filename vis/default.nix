@@ -5,7 +5,11 @@
   ...
 }:
 {
-  home.packages = [ pkgs.vis ];
+  home.packages = [
+    pkgs.vis.override {
+      lua = pkgs.lua.withPackage (ps: with ps; [ json ]);
+    }
+  ];
   home.sessionVariables.EDITOR = "vis";
   home.file = {
     vis = {
