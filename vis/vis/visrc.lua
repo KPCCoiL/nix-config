@@ -167,9 +167,3 @@ lspc.ls_map.latex = {
     name = 'texlab',
     cmd = 'texlab',
 }
-
-lspc.ls_map.asy = {
-    name = 'asymptote',
-    cmd = 'asy -lsp',
-}
-
