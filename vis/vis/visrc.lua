@@ -167,3 +167,12 @@ lspc.ls_map.latex = {
     name = 'texlab',
     cmd = 'texlab',
 }
+
+vis.events.subscribe(vis.events.WIN_OPEN, function (win)
+    local workingLSPs = { 'latex', }
+    for _, lang in ipairs(workingLSPs) do
+        if win.syntax == lang then
+            vis:command("lspc-start-server")
+        end
+    end
+end)
