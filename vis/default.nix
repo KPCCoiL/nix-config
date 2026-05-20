@@ -7,7 +7,9 @@
 {
   home.packages = [
     (pkgs.vis.override {
-      lua = pkgs.lua.withPackages (ps: with ps; [ json ]);
+      lua = pkgs.lua // {
+        withPackages = f: ps: f ps ++ (with ps; [ cjson ]);
+      };
     })
   ];
   home.sessionVariables.EDITOR = "vis";
