@@ -170,6 +170,6 @@ lspc.ls_map.latex = {
 
 lspc.ls_map.asy = {
     name = 'asymptote',
-    cmd = 'asy -ls',
+    cmd = 'asy -lsp',
 }
 
