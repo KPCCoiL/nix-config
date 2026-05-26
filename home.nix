@@ -374,5 +374,15 @@
 
   programs.kakoune = {
     enable = true;
+    config = {
+      colorScheme = "palenight";
+      keyMappings = {
+        "ctrl-l" = {
+          key = "<c-l>";
+          mode = "insert";
+          effect = "<esc>";
+        };
+      };
+    };
   };
 }
