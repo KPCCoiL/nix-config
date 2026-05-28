@@ -374,15 +374,20 @@
 
   programs.kakoune = {
     enable = true;
+    plugins = with pkgs.kakounePlugins; [ kakoune-lsp ];
     config = {
       colorScheme = "palenight";
-      keyMappings = {
-        "ctrl-l" = {
+      keyMappings = [
+        {
           key = "<c-l>";
           mode = "insert";
           effect = "<esc>";
-        };
-      };
+        }
+      ];
     };
+    extraConfig = ''
+      eval %sh{kak-lsp}
+      lsp-enable
+    '';
   };
 }
