@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgsUnstable,
+  inputs,
   ...
 }:
 
@@ -30,6 +31,7 @@
     bitwarden-desktop
     outfieldr
     unicodeit
+    inputs.bsm.packages.${system}.default
     pkgsUnstable.gemini-cli
     pkgsUnstable.kardolus-chatgpt-cli
     pkgsUnstable.codex
@@ -200,72 +202,6 @@
       email = "achitose@protonmail.com";
       pinentry = pkgs.pinentry_mac;
     };
-  };
-
-  programs.pubs = {
-    enable = true;
-    extraConfig = ''
-      [main]
-
-      pubsdir = ${config.home.homeDirectory}/MEGA/pubs
-      docsdir = ${config.home.homeDirectory}/MEGA/pubs/doc
-
-      doc_add = move
-
-      open_cmd = open
-
-      edit_cmd = ""
-
-      note_extension = md
-
-      max_authors = 3
-
-      debug = False
-
-      normalize_citekey = False
-
-      citekey_format = {author_last_name:l}{year}{short_title:l}
-
-      exclude_bibtex_fields = ,
-
-      [formating]
-
-      bold = True
-      italics = True
-      color = True
-
-
-      [theme]
-      # messages
-      ok = green
-      warning = yellow
-      error = red
-
-      # ui elements
-      filepath = bold
-      citekey = purple
-      tag = cyan
-
-      # bibliographic fields
-      author = bold
-      title = ""
-      publisher = ""
-      year = bold
-      volume = bold
-      pages = ""
-
-
-      [plugins]
-      active = alias,
-
-      [[alias]]
-      fzf = !pubs --force-colors list | fzf --ansi | sed -E 's/^\[([^ ]+)\] .*''$/\1/' | xargs pubs ''$@
-      ofzf = !pubs fzf doc open
-
-      [internal]
-      # The version of this configuration file. Do not edit.
-      version = 0.9.0
-    '';
   };
 
   programs.direnv = {
