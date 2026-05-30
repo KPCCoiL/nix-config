@@ -21,6 +21,8 @@
       url = "github:przmv/base16-vis";
       flake = false;
     };
+
+    bsm.url = "git+https://codeberg.org/CoiL/bsm.git";
   };
 
   outputs =
