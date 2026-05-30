@@ -16,7 +16,7 @@
       i = "https://inspirehep.net/literature?sort=mostrecent&size=100&page=1&q={}";
       nixpkgs = "https://search.nixos.org/packages?channel=unstable&query={}";
     };
-    keyBindings = builtins.foldl' pkgs.lib.recusiveUpdate {} [
+    keyBindings = builtins.foldl' pkgs.lib.recursiveUpdate {} [
       {
         insert."<Meta+l>" = "spawn --userscript rbw.sh";
       }
