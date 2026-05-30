@@ -16,15 +16,17 @@
       i = "https://inspirehep.net/literature?sort=mostrecent&size=100&page=1&q={}";
       nixpkgs = "https://search.nixos.org/packages?channel=unstable&query={}";
     };
-    keyBindings = {
-      insert."<Meta+l>" = "spawn --userscript rbw.sh";
-    }
-    // pkgs.lib.genAttrs [ "insert" "caret" ] (_: {
-      "<Ctrl+l>" = "mode-leave";
-    })
-    // pkgs.lib.genAttrs [ "normal" "caret" ] (_: {
-      "<Meta+d>" = "spawn --userscript open-dictionary.applescript";
-    });
+    keyBindings = builtins.foldl' pkgs.lib.recusiveUpdate [
+      {
+        insert."<Meta+l>" = "spawn --userscript rbw.sh";
+      }
+      (pkgs.lib.genAttrs [ "insert" "caret" ] (_: {
+        "<Ctrl+l>" = "mode-leave";
+      }))
+      (pkgs.lib.genAttrs [ "normal" "caret" ] (_: {
+        "<Meta+d>" = "spawn --userscript open-dictionary.applescript";
+      }))
+    ];
     settings = {
       colors = {
         tabs = {
