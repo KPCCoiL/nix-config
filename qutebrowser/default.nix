@@ -16,7 +16,15 @@
       i = "https://inspirehep.net/literature?sort=mostrecent&size=100&page=1&q={}";
       nixpkgs = "https://search.nixos.org/packages?channel=unstable&query={}";
     };
-    keyBindings.insert."<Meta+l>" = "spawn --userscript rbw.sh";
+    keyBindings = {
+      insert."<Meta+l>" = "spawn --userscript rbw.sh";
+    }
+    // pkgs.lib.genAttrs [ "insert" "caret" ] (_: {
+      "<Ctrl+l>" = "mode-leave";
+    })
+    // pkgs.lib.genAttrs [ "normal" "caret" ] (_: {
+      "<Meta+d>" = "spawn --userscript open-dictionary.applescript";
+    });
     settings = {
       colors = {
         tabs = {
@@ -40,17 +48,12 @@
       downloads.remove_finished = 5000;
       content.pdfjs = true;
     };
+    perDomainSettings = {
+      "github.com".content.javascript.clipboard = "access";
+    };
     extraConfig = ''
       import os
       import subprocess
-
-      for mode in ['insert', 'caret']:
-          config.bind('<Ctrl-l>', 'mode-leave', mode=mode)
-
-      for mode in ['normal', 'caret']:
-          config.bind('<Meta-d>', 'spawn --userscript open-dictionary.applescript', mode=mode)
-
-      config.set('content.javascript.clipboard', 'access', 'github.com')
 
       path = subprocess.run(['${pkgs.bash}/bin/bash', '-i', '-c', 'echo $PATH'], capture_output=True)
       os.environ['PATH'] = path.stdout.decode()
