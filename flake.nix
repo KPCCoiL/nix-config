@@ -94,13 +94,8 @@
           home-manager.darwinModules.home-manager
           {
             home-manager.extraSpecialArgs = {
+              inherit inputs;
               pkgsUnstable = import nixpkgsUnstable { system = "aarch64-darwin"; };
-              visAddons = {
-                theme = inputs.base16-vis;
-                plugins = {
-                  inherit (inputs) vis-tmux-repl vis-lspc;
-                };
-              };
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

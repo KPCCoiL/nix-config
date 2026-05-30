@@ -1,9 +1,14 @@
 {
   pkgs,
   lib,
-  visAddons,
+  inputs,
   ...
 }:
+let
+  plugins = {
+    inherit (inputs) vis-tmux-repl vis-lspc;
+  };
+in
 {
   home.packages = [
     (pkgs.vis.override {
@@ -23,12 +28,12 @@
       recursive = true;
     };
     visTheme = {
-      source = visAddons.theme;
+      source = inputs.base16-vis;
       target = ".config/vis/themes";
     };
   }
   // builtins.mapAttrs (name: plugin: {
     source = plugin;
     target = ".config/vis/plugins/${name}";
-  }) visAddons.plugins;
+  }) plugins;
 }
