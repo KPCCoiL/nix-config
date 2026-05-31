@@ -51,7 +51,7 @@
     julia-bin
 
     # Miscellaneous
-    nixfmt-rfc-style
+    nixfmt
   ];
 
   home = {
