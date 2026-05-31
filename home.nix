@@ -28,7 +28,6 @@
     rlwrap
     indent
     todo-txt-cli
-    bitwarden-desktop
     outfieldr
     unicodeit
     inputs.bsm.packages.${system}.default

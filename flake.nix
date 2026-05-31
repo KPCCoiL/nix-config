@@ -83,6 +83,7 @@
               "docker-desktop"
               "amethyst"
               "inkscape"
+              "bitwarden" # workaround for old electron
             ];
           };
         };
