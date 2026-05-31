@@ -1,22 +1,36 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+let
+  prefix = "_qute-";
+  userscripts = pkgs.callPackages ./userscripts {
+    inherit prefix;
+    bsm = inputs.bsm.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  };
+  uexe = name: "${userscripts.${name}}/bin/${prefix + name}";
+in
+{
+  home.packages = lib.attrsets.attrValues userscripts;
   programs.qutebrowser = {
     enable = true;
     # qutebrowser from Homebrew provides overall better experience on darwin
     package = pkgs.emptyDirectory;
     aliases = {
       q = "tab-close";
-      "update-filter-list" = "spawn --userscript update-filter-list.sh";
-      "add-arXiv" = "spawn --userscript add-arxiv.sh";
-      "add-doi" = "spawn --userscript add-doi.sh";
-      brave = "spawn --userscript open-in-brave.sh";
-      webarchive = "spawn --userscript webarchive.sh";
+      "update-filter-list" = "spawn --userscript ${uexe "update-filter-list"}";
+      bsm = "spawn --userscript ${uexe "bsmadd"}";
+      brave = "spawn --userscript ${uexe "open-in-brave"}";
+      webarchive = "spawn --userscript ${uexe "webarchive"}";
     };
     searchEngines = {
       i = "https://inspirehep.net/literature?sort=mostrecent&size=100&page=1&q={}";
       nixpkgs = "https://search.nixos.org/packages?channel=unstable&query={}";
     };
-    keyBindings = builtins.foldl' pkgs.lib.recursiveUpdate {} [
+    keyBindings = builtins.foldl' pkgs.lib.recursiveUpdate { } [
       {
         insert."<Meta+l>" = "spawn --userscript rbw.sh";
       }
@@ -24,7 +38,7 @@
         "<Ctrl+l>" = "mode-leave";
       }))
       (pkgs.lib.genAttrs [ "normal" "caret" ] (_: {
-        "<Meta+d>" = "spawn --userscript open-dictionary.applescript";
+        "<Meta+d>" = "spawn --userscript ${uexe "open-dictionary"}";
       }))
     ];
     settings = {
@@ -54,12 +68,6 @@
       "github.com".content.javascript.clipboard = "access";
     };
     extraConfig = ''
-      import os
-      import subprocess
-
-      path = subprocess.run(['${pkgs.bash}/bin/bash', '-i', '-c', 'echo $PATH'], capture_output=True)
-      os.environ['PATH'] = path.stdout.decode()
-
       filters = []
       for filename in ['filters.txt', 'additional-filters.txt']:
           with open(config.configdir / filename) as f:
@@ -97,5 +105,4 @@
       '')
     ];
   };
-  home.file.".qutebrowser/userscripts".source = ./userscripts;
 }

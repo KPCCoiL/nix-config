@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-echo "open -t https://web.archive.org/web/$QUTE_URL" > "$QUTE_FIFO"
