@@ -216,4 +216,23 @@
     export DONE_FILE="''$TODO_DIR/done.txt"
     export REPORT_FILE="''$TODO_DIR/report.txt"
   '';
+
+  programs.kakoune = {
+    enable = true;
+    plugins = with pkgs.kakounePlugins; [ kakoune-lsp ];
+    config = {
+      colorScheme = "palenight";
+      keyMappings = [
+        {
+          key = "<c-l>";
+          mode = "insert";
+          effect = "<esc>";
+        }
+      ];
+    };
+    extraConfig = ''
+      eval %sh{kak-lsp}
+      lsp-enable
+    '';
+  };
 }
