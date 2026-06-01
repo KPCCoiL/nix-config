@@ -233,4 +233,7 @@
       lsp-enable
     '';
   };
+
+  # bsm
+  programs.bash.shellAliases.bfz = "ls ~/bsm | fzf | xargs -I% open ~/bsm/%";
 }
