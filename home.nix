@@ -30,7 +30,7 @@
     todo-txt-cli
     outfieldr
     unicodeit
-    inputs.bsm.packages.${system}.default
+    inputs.bsm.packages.${stdenv.hostPlatform.system}.default
     pkgsUnstable.gemini-cli
     pkgsUnstable.kardolus-chatgpt-cli
     pkgsUnstable.codex
