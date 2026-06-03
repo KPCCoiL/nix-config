@@ -32,7 +32,7 @@ in
     };
     keyBindings = builtins.foldl' pkgs.lib.recursiveUpdate { } [
       {
-        insert."<Meta+l>" = "spawn --userscript rbw.sh";
+        insert."<Meta+l>" = "spawn --userscript ${uexe "rbw"}";
       }
       (pkgs.lib.genAttrs [ "insert" "caret" ] (_: {
         "<Ctrl+l>" = "mode-leave";
