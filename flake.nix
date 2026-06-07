@@ -10,6 +10,9 @@
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    git-hooks-nix.url = "github:cachix/git-hooks.nix";
+    git-hooks-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     vis-tmux-repl = {
       url = "github:KPCCoiL/vis-tmux-repl/mac-sed";
       flake = false;
@@ -37,7 +40,30 @@
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ nix-darwin.flakeModules.default ];
+      imports = [
+        nix-darwin.flakeModules.default
+        inputs.git-hooks-nix.flakeModule
+      ];
+
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+      perSystem =
+        {
+          config,
+          self',
+          inputs',
+          pkgs,
+          ...
+        }:
+        {
+          pre-commit.settings.hooks.nixfmt.enable = true;
+          devShells.default = config.pre-commit.devShell;
+        };
+
       flake = {
         darwinConfigurations."InternalBlaze" = nix-darwin.lib.darwinSystem {
           modules = [
