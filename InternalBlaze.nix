@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   environment.systemPackages = [
     pkgs.vim
@@ -15,7 +15,7 @@
 
   system.primaryUser = "akifumi";
 
-  system.configurationRevision = self.rev or self.dirtyRev or null;
+  system.configurationRevision = with inputs; (self.rev or self.dirtyRev or null);
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

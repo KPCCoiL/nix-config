@@ -49,6 +49,7 @@
             home-manager.users.akifumi = ./home.nix;
           }
         ];
+        specialArgs = { inherit inputs; };
       };
     };
 }
