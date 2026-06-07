@@ -34,66 +34,10 @@
       home-manager,
       ...
     }:
-    let
-      configuration =
-        { pkgs, ... }:
-        {
-          # List packages installed in system profile. To search by name, run:
-          # $ nix-env -qaP | grep wget
-          environment.systemPackages = [
-            pkgs.vim
-            pkgs.coreutils-full
-          ];
-
-          # Necessary for using flakes on this system.
-          nix.settings.experimental-features = "nix-command flakes";
-          nix.channel.enable = false;
-
-          # Enable alternative shell support in nix-darwin.
-          programs.bash = {
-            enable = true;
-            completion.enable = true;
-          };
-
-          system.primaryUser = "akifumi";
-
-          # Set Git commit hash for darwin-version.
-          system.configurationRevision = self.rev or self.dirtyRev or null;
-
-          # Used for backwards compatibility, please read the changelog before changing.
-          # $ darwin-rebuild changelog
-          system.stateVersion = 7;
-
-          # The platform the configuration will be used on.
-          nixpkgs.hostPlatform = "aarch64-darwin";
-
-          users.users.akifumi.home = "/Users/akifumi";
-
-          security.pam.services.sudo_local = {
-            reattach = true;
-            touchIdAuth = true;
-          };
-
-          homebrew = {
-            enable = true;
-            onActivation.cleanup = "uninstall";
-            casks = [
-              "qutebrowser"
-              "j"
-              "docker-desktop"
-              "amethyst"
-              "inkscape"
-              "bitwarden" # workaround for old electron
-            ];
-          };
-        };
-    in
     {
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#simple
       darwinConfigurations."InternalBlaze" = nix-darwin.lib.darwinSystem {
         modules = [
-          configuration
+          ./InternalBlaze.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.extraSpecialArgs = {
